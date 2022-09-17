@@ -75,7 +75,7 @@ class Tensor:
         res = Tensor(np.transpose(self.data), (self,))
 
         def _backward():
-            self.grad = np.transpose(np.array(self.grad) + res.grad)
+            self.grad = np.array(self.grad) + np.transpose(res.grad)
 
         res._backward = _backward
 
